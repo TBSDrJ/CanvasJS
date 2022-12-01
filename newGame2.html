@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>New Game</title>
+    <script defer type="text/javascript" src="./myClasses.js"></script>
+    <script defer type="text/javascript" src="./newGame.js"></script>
+    <script defer type="text/javascript">
+        function onMouseClick()
+        {
+          //just a silly pop up when the user clicks anywhere on the canvas
+          alert("PLEASE stop clicking me... it's annoying!!!");
+        }
+
+        function onKeyPress(e)   //e for event
+        {
+          //set the value from the raised event to a local var, kp for keypressed
+          var kp = e.key;
+          //quick check to see if we're getting some values
+          console.log(e.keyCode);    // keyCode returns the JavaScript numeric value of pressed key
+          console.log(e.key);        // key returns the actual value of the key such as 'w' or 'a'
+
+          //we can now check if the user presses specific keys
+          if (kp == "w" || kp == "W")
+          {
+            //alert("you pressed the w key");
+            console.log("you pressed the w key");
+            /* Now, instead of alert or console output you eventually would put a function
+              call here so when the user hits the 'w' key, you move an image/shape for example */
+          }
+          else if (kp == "a" || kp == "A")
+          {
+            //alert("you pressed the a key");
+            console.log("you pressed the a key");
+          }
+        }
+    </script>
+  </head>
+  <body>
+    <!-- we're adding a tabindex='1' to be sure the user's mouse has focus on the canvas
+    when they click on it, think of it as putting the canvas 'on top' in terms of depth -->
+    <canvas tabindex='1' id="mainCanvas"></canvas>
+
+  </body>
+
+  <!-- it's generally prefered to put <script>s inside the <head> tag,
+  in this case we're putting it here to be sure the canvas
+  has been drawn first before we access it-->
+  <script type="text/javascript">
+    //document.getElementById lets us get a reference to an HTML element using its id
+    var myCanvas = document.getElementById("mainCanvas");
+    //now we can use the addEventListener method to add listeners for "click" and "keydown" (1st arg),
+    //and the name of our functions to call when the event is fired (2nd arg), onMouseClick and onKeyPress
+    myCanvas.addEventListener("click", onMouseClick);
+    myCanvas.addEventListener("keypress", onKeyPress);
+  </script>
+</html>
